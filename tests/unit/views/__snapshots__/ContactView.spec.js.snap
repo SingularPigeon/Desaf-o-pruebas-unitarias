@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactView EL HTML mantiene su estructura 1`] = `
+<h1>Contact us</h1>
+<form><label for="name">Name:</label><input type="text" id="name" name="name">&lt; <label for="email">Email:</label><input type="email" id="email" name="email">&lt; <label for="message">Message:</label><textarea id="message" name="message"></textarea><button>Submit</button></form>
+`;

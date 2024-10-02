@@ -7,5 +7,13 @@
     <input type="email" id="email" name="email" v-model="email"><
     <label for="message">Message:</label>
     <textarea id="message" name="message" v-model="message"></textarea>
+    <button @click.prevent="submitForm">Submit</button>
   </form>
 </template>
+<script setup>
+import { ref } from 'vue';
+const name = ref('');
+const email = ref('');
+const message = ref('');
+
+</script>

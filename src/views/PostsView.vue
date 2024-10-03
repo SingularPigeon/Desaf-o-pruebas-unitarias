@@ -9,18 +9,14 @@
   </div>
 </template>
 
-<script> 
-  export default {
-    name: 'PostsViewVue',
-    data() {
-      return {
-        posts: [
-          { id: 1, name: 'Post 1' },
-          { id: 2, name: 'Post 2' },
-          { id: 3, name: 'Post 3' },
-          { id: 4, name: 'Post 4' }
-        ]
-      }
-    }
-  }
+<script setup>
+import { ref } from 'vue'
+
+
+const posts = ref([
+  { id: 1, name: 'Post 1' },
+  { id: 2, name: 'Post 2' },
+  { id: 3, name: 'Post 3' },
+  { id: 4, name: 'Post 4' }
+])
 </script>

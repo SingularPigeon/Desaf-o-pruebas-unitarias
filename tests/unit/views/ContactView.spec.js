@@ -11,7 +11,7 @@ describe('ContactView', () => {
   })
 
 test('Comprobando la ruta a la vista ContactView', async () => {
-  const router = createRouter({
+  const routerPrueba = createRouter({
     history: createWebHistory(),
     routes: [
       {
@@ -21,11 +21,11 @@ test('Comprobando la ruta a la vista ContactView', async () => {
       }
     ]
 })
-router.push('/contact')
-await router.isReady()
+routerPrueba.push('/contact')
+await routerPrueba.isReady()
 const wrapper = mount(ContactView, {
   global: {
-    plugins: [router]
+    plugins: [routerPrueba]
   }
 })
 expect(wrapper.findComponent(ContactView).exists()).toBe(true)

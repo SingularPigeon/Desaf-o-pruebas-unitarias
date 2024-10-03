@@ -5,15 +5,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import PostsView from './PostsView.vue';
 
-// @ is an alias to /src
-
-export default {
-  name: 'HomeView',
-  components: {
-    PostsView
-}
-}
 </script>

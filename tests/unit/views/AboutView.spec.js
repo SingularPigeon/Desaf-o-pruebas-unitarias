@@ -3,11 +3,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import AboutView from '@/views/AboutView.vue'
 
-describe('AboutView', () => { 
-  let router
 
+describe('AboutView', () => { 
+  let routerPrueba
+  
   beforeEach(async () => {
-    router = createRouter({
+    routerPrueba = createRouter({
       history: createWebHistory(),
       routes: [{
         path: '/about',
@@ -15,14 +16,22 @@ describe('AboutView', () => {
         component: AboutView
       }],
     })
-    router.push('/about')
-    await router.isReady()
+    routerPrueba.push('/about')
+    await routerPrueba.isReady()
   })
-
-  test('Probando la existencia del componente o vista AboutView', async () => {
+  it('El HTML se renderiza correctamente', () => {
     const wrapper = mount(AboutView, {
       global: {
-        plugins: [router]
+        plugins: [routerPrueba]
+      }
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+  
+  test('Probando la existencia la vista AboutView', async () => {
+    const wrapper = mount(AboutView, {
+      global: {
+        plugins: [routerPrueba]
       }
     })
     expect(wrapper.findComponent(AboutView).exists()).toBe(true)
@@ -31,10 +40,23 @@ describe('AboutView', () => {
   test('Tiene un título "About us"', async () => {
     const wrapper = mount(AboutView, {
       global: {
-        plugins: [router]
+        plugins: [routerPrueba]
       }
     })
     const h1 = wrapper.find('h1')
     expect(h1.text()).toBe('About us')
+  })
+
+  test('Tiene un parráfo "Lorem..."', async () => {
+    const wrapper = mount(AboutView, {
+      global: {
+        plugins: [routerPrueba]
+      }
+    })
+    const p = wrapper.find('p')
+
+  expect(p.exists()).toBe(true)
+
+  expect(p.text()).toContain('Lorem ipsum dolor sit amet')
   })
 })

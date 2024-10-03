@@ -2,11 +2,9 @@ import { mount } from '@vue/test-utils'
 import { createRouter, createWebHistory } from 'vue-router'
 import PostsView from '@/views/PostsView.vue'
 
-
-
 describe('PostsView', () => { 
     test('Probando la existencia del componente o vista PostsView ', async () => {
-        const router = createRouter({
+        const routerPrueba = createRouter({
             history: createWebHistory(),
             routes: [{
                 path: '/posts',
@@ -15,12 +13,12 @@ describe('PostsView', () => {
             }
         ],
         })
-        router.push('/posts')
-        await router.isReady()
+        routerPrueba.push('/posts')
+        await routerPrueba.isReady()
 
         const wrapper = mount(PostsView, {
             global: {
-                plugins: [router]
+                plugins: [routerPrueba]
             }
         })
         expect(wrapper.findComponent(PostsView).exists()).toBe(true)
